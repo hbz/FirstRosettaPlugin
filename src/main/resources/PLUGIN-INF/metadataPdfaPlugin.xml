@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pl:metadata-config xmlns:pl="http://www.exlibrisgroup.com/Plugins/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <pl:pluginTypeName>MigrationToolPlugin</pl:pluginTypeName>
+   <pl:deployName>PdfAMigrationPlugin</pl:deployName>
+   <pl:className>de.hbz_nrw.www.pdfaconverter.clientImpl.RestClientImpl</pl:className>
+   <pl:initParameters>
+      <fr:x_form xmlns:fr="http://com/exlibris/digitool/common/forms/xmlbeans" />
+   </pl:initParameters>
+   <pl:description>Plugin for using remote PdfAConverter-Service of hbz</pl:description>
+   <pl:module>Preservation</pl:module>
+   <pl:version>0.01</pl:version>
+   <pl:materialType>DIGITAL</pl:materialType>
+   <pl:generalType>TASK</pl:generalType>
+   <pl:implType>java</pl:implType>
+   <pl:contactPerson>
+      <contact_info xmlns="http://www.exlibrisgroup.com/Plugins/1.0/">
+        <contactType>admin</contactType>
+        <firstName>Andres</firstName>
+        <lastName>Quast</lastName>
+        <telephone1>+4922140075460</telephone1>
+        <telephone2></telephone2>
+        <email>quast@hbz-nw.de</email>
+        <address1>Hochschulbibliothkzentrum des Landes NRW</address1>
+        <address2>Jülicher Straße 6</address2>
+        <city>Cologne</city>
+        <zipCode>50674</zipCode>
+        <country>Germany</country>
+      </contact_info>
+   </pl:contactPerson>
+</pl:metadata-config>
