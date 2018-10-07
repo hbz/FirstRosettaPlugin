@@ -3,8 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<pl:pluginTypeName>MigrationToolPlugin</pl:pluginTypeName>
 	<pl:deployName>PdfAMigrationPlugin</pl:deployName>
-	<pl:className>de.hbz_nrw.www.pdfaconverter.clientImpl.RestClientImpl
-	</pl:className>
+	<pl:className>de.nrw.hbz.rosetta.plugin.clientimpl.FirstPlugin</pl:className>
 	<pl:initParameters>
 		<fr:x_form xmlns:fr="http://com/exlibris/digitool/common/forms/xmlbeans">
 			<grid_x>2</grid_x>
@@ -16,7 +15,41 @@
 					<default_value>2u</default_value>
 					<mandatory>true</mandatory>
 					<x_logic_type>String</x_logic_type>
-					<x_ui_type>TextField</x_ui_type>
+					<x_ui_type>ComboBox</x_ui_type>
+					<x_options>
+						<x_option>
+							<value>1a</value>
+							<label>1a</label>
+						</x_option>
+						<x_option>
+							<value>1b</value>
+							<label>1b</label>
+						</x_option>
+						<x_option>
+							<value>2a</value>
+							<label>2a</label>
+						</x_option>
+						<x_option>
+							<value>2u</value>
+							<label>2u</label>
+						</x_option>
+						<x_option>
+							<value>2b</value>
+							<label>2b</label>
+						</x_option>
+						<x_option>
+							<value>3a</value>
+							<label>3a</label>
+						<x_option>
+							<value>3u</value>
+							<label>3u</label>
+						</x_option>
+						<x_option>
+							<value>3b</value>
+							<label>3b</label>
+						</x_option>
+						</x_option>
+					</x_options>
 				</x_field>
 				<x_field>
 					<field_name>returnOnlyValidPdfA</field_name>
@@ -33,10 +66,11 @@
 	<pl:description>Plugin for using remote PdfAConverter-Service of hbz
 	</pl:description>
 	<pl:module>Preservation</pl:module>
-	<pl:version>0.01</pl:version>
+	<pl:version>0.02</pl:version>
 	<pl:materialType>DIGITAL</pl:materialType>
 	<pl:generalType>TASK</pl:generalType>
 	<pl:implType>java</pl:implType>
+	<pl:publicApi>N</pl:publicApi>
 	<pl:contactPerson>
 		<contact_info xmlns="http://www.exlibrisgroup.com/Plugins/1.0/">
 			<contactType>admin</contactType>

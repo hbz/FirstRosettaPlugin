@@ -9,7 +9,6 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-
   <organization>
   	<name>Hochschulbibliothekszentrum des Landes Nordrhein-Westfalen</name>
   	<url>http://www.hbz-nrw.de</url>
@@ -41,64 +40,6 @@
   				</archive>
   			</configuration>
   		</plugin>
-
-		<plugin>
-  			<groupId>org.apache.axis2</groupId>
-  			<artifactId>axis2-aar-maven-plugin</artifactId>
-  			<version>1.4.1</version>
-			<configuration>
-			    <fileSets>
-			        <fileSet>
-			            <directory>src/main/resources</directory>
-			            <outputDirectory>resources</outputDirectory>
-			            <includes>
-			                <include>**/*.txt</include>
-			            </includes>
-			        </fileSet>
-			    </fileSets>
-   			</configuration>
-			<executions>
-  				<execution>
-  					<id>aar</id>
-  				</execution>
-  			</executions>
-  		</plugin>
-  		<plugin>
-  			<groupId>org.apache.maven.plugins</groupId>
-  			<artifactId>maven-war-plugin</artifactId>
-  			<version>2.3</version>
-  			<configuration>
-				<webXml>src/main/resources/WEB-INF/web.xml</webXml>
-				<packagingExcludes>WEB-INF/lib/servlet-api-2.3.jar</packagingExcludes>				
-				<warName>PdfAConverter</warName>
-			</configuration>
-  			<executions>
-  				<execution>
-  					<id>war</id>
-  				</execution>
-  			</executions> 
-  		</plugin>
-		
-
-		<!-- <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jarsigner-plugin</artifactId>
-        <version>1.2</version>
-        <executions>
-          <execution>
-            <id>sign</id>
-            <goals>
-              <goal>sign</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <keystore>${project.basedir}/src/conf/pdfaconv.jks</keystore>
-          <alias>quast</alias>
-          <storepass>!pubsys4cert</storepass>
-          <keypass>!pubsys4cert</keypass>
-        </configuration>
-      </plugin>  -->
   	</plugins>
   </build>
   <dependencies>
