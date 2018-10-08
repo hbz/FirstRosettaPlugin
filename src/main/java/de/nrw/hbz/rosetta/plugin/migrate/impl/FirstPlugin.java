@@ -1,7 +1,7 @@
 /**
  * 
  */
-package de.nrw.hbz.rosetta.plugin.clientimpl;
+package de.nrw.hbz.rosetta.plugin.migrate.impl;
 
 import java.util.Map;
 
@@ -28,6 +28,8 @@ public class FirstPlugin {
 		initParams.get(RETURN_ONLY_VALID_PDFA);
 		initParams.get(REPORT_FORMAT);
 	}
+	
+	
 }
 
 /**
