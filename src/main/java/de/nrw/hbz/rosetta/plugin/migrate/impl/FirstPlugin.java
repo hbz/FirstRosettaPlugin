@@ -5,6 +5,7 @@ package de.nrw.hbz.rosetta.plugin.migrate.impl;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
@@ -25,6 +26,8 @@ import de.nrw.hbz.pdfaconverter.types.ReportLangType;
 import de.nrw.hbz.pdfaconverter.types.ReportTriggerType;
 import de.nrw.hbz.rosetta.plugin.migrate.client.impl.ClientImpl;
 
+import com.exlibris.core.sdk.storage.containers.StoredEntityMetaData;
+
 /**
  * @author aquast
  *
@@ -40,90 +43,51 @@ public class FirstPlugin {
 	private static final String REPORT_FORMAT = "reportFormat";
 	private static String pluginVersion = null;
 	
-	private ClientImpl cImpl = new ClientImpl();
-
-	Properties prop = new Properties();
-	private ParameterType param = PdfAPilotParameters.createParamType(prop);
+	private Properties prop =  PdfAPilotParameters.getDefaultProperties();
+	private StoredEntityMetaData semd = new StoredEntityMetaData();
 
 	/**
 	 * Method to read Parameters into Plugin
 	 * @param initParams
 	 */
 	public void initParams(Map<String, String> initParams){
-		this.pluginVersion = initParams.get(PLUGIN_VERSION_INIT_PARAM);
+		pluginVersion = initParams.get(PLUGIN_VERSION_INIT_PARAM);
 		initParams.get(COMPLIANCY_LEVEL);
 		initParams.get(RETURN_ONLY_VALID_PDFA);
 		initParams.get(REPORT_FORMAT);
+
+		prop.setProperty(COMPLIANCY_LEVEL,initParams.get(COMPLIANCY_LEVEL));
+
+	
 	}
 	
 	public void migrateStream(){
 		
 		ConvertFromStreamResponse response = null; 
+		
+		File fPath = new File(semd.getCurrentFilePath());
 
+		ClientImpl cImpl = new ClientImpl();
 		/** Prepare an request with an Stream Resource **/
 		ConvertFromStream convStream = new ConvertFromStream();
 		convStream.setConverterParameters(getParams());
 		
-		InputStream is = getClass().getResourceAsStream("/simple_test.pdf") ;
-		BufferedInputStream bis = new BufferedInputStream(is);
-		ByteArrayOutputStream bat = new ByteArrayOutputStream();
-		
-		int i = 0;
-		try {
-			while((i = bis.read()) != -1){
-				bat.write(i);
-			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-				
-		byte[] bStream = bat.toByteArray();
-		// parse stream into Base64 String 
-		String stream64 = null;
-		try {
-			byte[] bStream64 = Base64.encodeBase64(bStream);
-			stream64 = new String(bStream64, "UTF-8");
-		} catch (UnsupportedEncodingException e1) {
-			log.error(e1);
-		}
-		convStream.setByteStream(stream64);
+		convStream.setByteStream(de.nrw.hbz.pdfaconverter.util.FileUtil.loadFileIntoStream(fPath).toString());
 
 		/** Call the client with the previously generated request **/
 		try{
 			response = cImpl.convertFromStream(convStream);
 		}catch(Exception e){
-			System.out.println(e);
-			e.printStackTrace();
+			log.error(e.getMessage());
 		}
 		
-		System.out.println("Ergebnis Stream: " + response.getResponseDocumentStream());
+		log.info("Ergebnis Stream: " + response.getResponseDocumentStream());
 		
 	}
 
 	public ParameterType getParams(){
+		ParameterType param = PdfAPilotParameters.createParamType(prop);
 		return param;
 	}
 	
 }
-
-/**
-#Callas pdfaPilot Configuration File
-#Thu Jul 25 07:23:01 CEST 2013
-analyseOnly=false
-htmlNoDetails=false
-htmlOpenResult=true
-htmlNoIcons=false
-xmlReport=false
-reportTrigger=ALWAYS
-htmlReport=true
-compliancyLevel=2b
-createEpub=false
-quickProcessing=true
-forceConversionReconvert=false
-forceConversionPagesToImages=false
-forceConversionDocToImages=false
-mhtReport=false
-returnOnlyValidPdfA=true
-reportLang=DE
-**/

@@ -66,7 +66,7 @@
 	<pl:description>Plugin for using remote PdfAConverter-Service of hbz
 	</pl:description>
 	<pl:module>Preservation</pl:module>
-	<pl:version>0.02</pl:version>
+	<pl:version>0.03</pl:version>
 	<pl:materialType>DIGITAL</pl:materialType>
 	<pl:generalType>TASK</pl:generalType>
 	<pl:implType>java</pl:implType>
