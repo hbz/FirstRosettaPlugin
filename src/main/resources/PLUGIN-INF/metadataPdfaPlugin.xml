@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pl:metadata-config xmlns:pl="http://www.exlibrisgroup.com/Plugins/1.0/"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<pl:pluginTypeName>MigrationToolPlugin</pl:pluginTypeName>
-	<pl:deployName>PdfAMigrationPlugin</pl:deployName>
+	<pl:pluginTypeName>FormatIdentificationPlugin</pl:pluginTypeName>
+	<pl:deployName>PdfFormatIdentifcationPlugin</pl:deployName>
 	<pl:className>de.nrw.hbz.rosetta.plugin.clientimpl.FirstPlugin</pl:className>
 	<pl:initParameters>
 		<fr:x_form xmlns:fr="http://com/exlibris/digitool/common/forms/xmlbeans">
@@ -63,8 +63,7 @@
 			</x_fields>
 		</fr:x_form>
 	</pl:initParameters>
-	<pl:description>Plugin for using remote PdfAConverter-Service of hbz
-	</pl:description>
+	<pl:description>Plugin for using remote veraPDF-Service of hbz</pl:description>
 	<pl:module>Preservation</pl:module>
 	<pl:version>0.03</pl:version>
 	<pl:materialType>DIGITAL</pl:materialType>
