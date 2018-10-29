@@ -27,6 +27,7 @@ import de.nrw.hbz.pdfaconverter.types.ReportTriggerType;
 import de.nrw.hbz.rosetta.plugin.migrate.client.impl.ClientImpl;
 
 import com.exlibris.core.sdk.storage.containers.StoredEntityMetaData;
+import com.exlibris.core.sdk.utils.FileUtil;
 
 /**
  * @author aquast
@@ -66,7 +67,7 @@ public class FirstPlugin {
 		ConvertFromStreamResponse response = null; 
 		
 		File fPath = new File(semd.getCurrentFilePath());
-
+		
 		ClientImpl cImpl = new ClientImpl();
 		/** Prepare an request with an Stream Resource **/
 		ConvertFromStream convStream = new ConvertFromStream();
